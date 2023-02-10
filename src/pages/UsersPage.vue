@@ -1,8 +1,9 @@
 <template>
-  <div v-if="dataSource">
-  <Table 
-    :dataSource="dataSource"
-  ></Table>
+  <div v-if="dataSource" class="customer-table">
+    <Table 
+      :dataSource="dataSource"
+      title="Customers"
+    ></Table>
   </div>
 </template>
 
@@ -68,6 +69,9 @@ export default class UsersPage extends Vue {
 }
 </script>
 
-<style>
-
+<style lang="scss">
+.customer-table {
+  margin: 0 auto;
+  width: 90%;
+}
 </style>
