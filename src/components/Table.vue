@@ -59,14 +59,17 @@ import SearchBar from './SearchBar.vue'
   }
 })
 export default class Table extends Vue {
-  @Prop() private title = '';
+  @Prop() private title?: string;
   @Prop() private dataSource: ITableDataSource<Record<string, string | number>> | undefined = undefined;
   sortItems: unknown[] | undefined = undefined;
   sortData: { sort: string, key: string } | undefined = {sort: '', key: ''};
   searchTerm = '';
   
   get items() {
-    return this.sortItemsByKey(this.sortData, this.filterDataSource(this.searchTerm))
+    return this.sortItemsByKey(
+      this.sortData,
+      this.filterDataSource(this.searchTerm)
+    )
   }
 
   onSearch(term: string) {
@@ -84,7 +87,7 @@ export default class Table extends Vue {
   }
 
   sortItemsByKey(sortData: { sort: string, key: string } | undefined, data: Record<string, string | number>[] | undefined) {
-    if (!sortData || sortData.sort === 'disabled') {
+    if (!sortData) {
       return data;
     }
 
@@ -94,13 +97,13 @@ export default class Table extends Vue {
       const valueB = b[sortKey  as keyof typeof data]
 
       if (typeof valueA === 'number' && typeof valueB === 'number') {
-        if (sortData.sort === 'asc') {
+        if (sortData.sort === 'asc' || sortData.sort === 'disabled') {
           return valueA - valueB;
         } else {
           return valueB - valueA;
         }
       } else {
-        if (sortData.sort === 'asc') {
+        if (sortData.sort === 'asc' || sortData.sort === 'disabled') {
           return (valueA as string)?.localeCompare(valueB as string)
         } else {
           return (valueB as string)?.localeCompare(valueA as string)
