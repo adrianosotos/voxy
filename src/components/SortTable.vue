@@ -35,7 +35,6 @@ export default class SortTable extends Vue {
     }
   }
 
-
   onSortSelected() {
     const nextStateHashMap = {
       disabled: 'asc',
@@ -43,9 +42,7 @@ export default class SortTable extends Vue {
       desc: 'disabled'
     }
 
-    const nextState = nextStateHashMap[this.sortState as keyof typeof nextStateHashMap]
-
-    this.sortState = nextState
+    this.sortState = nextStateHashMap[this.sortState as keyof typeof nextStateHashMap]
 
     this.$emit('sortSelected', {
       sort: this.sortState,
@@ -56,7 +53,6 @@ export default class SortTable extends Vue {
   isUpArrow(sortState: string) {
     return sortState === 'asc' || this.sortState === 'disabled';
   }
-
 
   isActive() {
     if(this.sortState !== 'disabled') {
