@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "name": "Adriano",
+      "email": "sotos.adriano@gmail.com",
+      "lastName": "Sotos",
+      "primaryGroup": "Important People",
+      "phoneNumber": "48991924950",
+      "hoursStudied": 1000
+    },
+    {
+      "name": "Sarah",
+      "email": "sotos.sarah@gmail.com",
+      "lastName": "Sotos",
+      "primaryGroup": "Important People",
+      "phoneNumber": "55991924950",
+      "hoursStudied": 2000
+    },
+    {
+      "name": "Marcos",
+      "email": "santos.marcos@gmail.com",
+      "lastName": "Santos",
+      "primaryGroup": "Regular",
+      "phoneNumber": "48991924960",
+      "hoursStudied": 3000
+    },
+    {
+      "name": "Maria",
+      "email": "jose.maria@gmail.com",
+      "lastName": "Jose",
+      "primaryGroup": "Regular",
+      "phoneNumber": "48991925050",
+      "hoursStudied": 4000
+    }
+  ]
+}
