@@ -1,12 +1,10 @@
 <template>
   <div>
     <div class="table-header">
-      <h2 v-if="title">{{ title }}</h2>
-      <div class="table-header__search-bar">
-        <search-bar @onInputChange="onSearch"/>
-      </div>
+      <search-bar @onInputChange="onSearch"/>
     </div>
     <table>
+      <caption>{{ title }}</caption>
       <thead>
         <tr>
           <th
@@ -28,6 +26,7 @@
           :key="key"
         >
           <td
+            :data-label="column.title"
             v-for="(column, indexColumn) in dataSource.columns"
             :key="indexColumn"
           >
@@ -120,50 +119,89 @@ export default class Table extends Vue {
 </script>
 
 <style lang="scss">
+
 .table-header {
-    display: flex;
-    margin: 5px 0;
-    width: 100%;
-
-    h2 {
-      margin: auto 0;
-      text-align: left;
-      width: 70%
-    }
-
-    .table-header__search-bar{
-      width: 30%;
-    }
+  margin-left: auto;
+  width: 30%;
 }
 
 table {
+  border: 1px solid #ccc;
   border-collapse: collapse;
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
   width: 100%;
+  table-layout: fixed;
 
-  td, th {
+  caption {
+    font-size: 1.5em;
+    margin: .5em 0 .75em;
+  }
+
+  tr {
+    background-color: #f8f8f8;
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: .35em;
   }
 
-  td {
+  th, td {
+    padding: .625em;
     text-align: left;
-  }
-
-  tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-
-  tr:hover { 
-    background-color: #ddd;
   }
 
   th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #04AA6D;
-    color: white;
+    font-size: .85em;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .table-header {
+    width: 100%;
+  }
+
+  table {
+    border: 0;
+
+    caption {
+      font-size: 1.3em;
+    }
+
+    thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+
+    tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+
+    td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+
+      &::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
   }
 }
 </style>

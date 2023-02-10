@@ -71,7 +71,7 @@ export default class UsersPage extends Vue {
 
 <style lang="scss">
 .customer-table {
-  margin: 0 auto;
+  margin: 0 auto 300px auto;
   width: 90%;
 }
 </style>
