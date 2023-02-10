@@ -1,7 +1,11 @@
 <template>
   <div>
-    Tabela
-    <search-bar @onInputChange="onSearch"/>
+    <div class="table-header">
+      <h2 v-if="title">{{ title }}</h2>
+      <div class="table-header__search-bar">
+        <search-bar @onInputChange="onSearch"/>
+      </div>
+    </div>
     <table>
       <thead>
         <tr>
@@ -55,6 +59,7 @@ import SearchBar from './SearchBar.vue'
   }
 })
 export default class Table extends Vue {
+  @Prop() private title = '';
   @Prop() private dataSource: ITableDataSource<Record<string, string | number>> | undefined = undefined;
   sortItems: unknown[] | undefined = undefined;
   sortData: { sort: string, key: string } | undefined = {sort: '', key: ''};
@@ -111,6 +116,51 @@ export default class Table extends Vue {
 
 </script>
 
-<style>
+<style lang="scss">
+.table-header {
+    display: flex;
+    margin: 5px 0;
+    width: 100%;
 
+    h2 {
+      margin: auto 0;
+      text-align: left;
+      width: 70%
+    }
+
+    .table-header__search-bar{
+      width: 30%;
+    }
+}
+
+table {
+  border-collapse: collapse;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;
+
+  td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  td {
+    text-align: left;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover { 
+    background-color: #ddd;
+  }
+
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+}
 </style>
