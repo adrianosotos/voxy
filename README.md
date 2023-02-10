@@ -1,4 +1,4 @@
-# 🚀 Voxy Chanllenge 🚀
+# 🚀 Voxy Challenge 🚀
 
 
 ### Overview
@@ -7,6 +7,8 @@ This project is a challenge to Voxy, which consists in an user responsive table 
 
 ### Project Pre requisites
 
+You will need <s>yarn</s> [npm](https://www.npmjs.com/) as matter to install code packages. If you still don't have it hit the [link](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
 Backend mocks runs with [json-server](https://www.npmjs.com/package/json-server), so you need to install it on your machine 🤓
 
 Installation:
@@ -14,9 +16,6 @@ Installation:
 ```
 npm install -g json-server
 ```
-
-You will also need <s>yarn</s> [npm](https://www.npmjs.com/) as matter to install ui packages. If you still don't have it follow the [link](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-
 ### Installation
 
 Just clone the repo and install package dependencies:
